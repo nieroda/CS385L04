@@ -62,8 +62,17 @@ Replicas | Concurrency | Requests | Requests per second (mean) | Longest request
 
 
 
+Did you get a noticeable improvement between 9 and 12 replicas? Explain this behavior.
 
+5-10% overall improvement, not the 25% I was expecting.
 
+What is the maximum throughput your service can provide? What is the maximum concurrency that you can support, while maintaining maximum throughput? How many replicas (approximately) do you need to support that concurrency level and throughput?
+
+While not really the max, the 'max' throughput of this server was 9757.54. This was measured with 12 replica sets, 5000 concurrent requests with 20,000 requests total.
+
+Suppose we expect our service to have a maximum number of 2000 concurrent users. We have a Service Level Agreement with our customers in which we guarantee a maximum response time up to 1.5 seconds, with a mean response of less than 300 milliseconds, with requests 98% of the time less than 600 ms. Can we fulfill those requirements? If so, how many replicas will be needed?
+
+Based off the data we will be able to fulfill these requirements with ~12 replicas.
 
 
 
